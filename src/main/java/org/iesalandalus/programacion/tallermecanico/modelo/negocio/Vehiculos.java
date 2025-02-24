@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Vehiculos {
 
-    private List<Vehiculo> coleccionVehiculos;
+    private final List<Vehiculo> coleccionVehiculos;
 
     public Vehiculos(){
         coleccionVehiculos = new ArrayList<>();
@@ -29,7 +29,8 @@ public class Vehiculos {
 
     public Vehiculo buscar(Vehiculo vehiculo){
         Objects.requireNonNull(vehiculo, "No se puede buscar un vehículo nulo.");
-        return (coleccionVehiculos.contains(vehiculo) ? vehiculo : null);
+        int indice = coleccionVehiculos.indexOf(vehiculo);
+        return (coleccionVehiculos.contains(vehiculo) ? coleccionVehiculos.get(indice) : null);
     }
 
     public void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion{

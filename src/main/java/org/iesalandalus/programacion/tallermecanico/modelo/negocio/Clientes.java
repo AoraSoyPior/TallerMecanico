@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Clientes {
 
-    private List<Cliente> coleccionClientes;
+    private final List<Cliente> coleccionClientes;
 
     public Clientes(){
         coleccionClientes = new ArrayList<>();
@@ -29,21 +29,23 @@ public class Clientes {
 
     public Cliente modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion{
         Objects.requireNonNull(cliente, "No se puede modificar un cliente nulo.");
-        if (!coleccionClientes.contains(cliente)){
+        Cliente clienteLista = buscar(cliente);
+        if (clienteLista == null){
             throw new TallerMecanicoExcepcion("No existe ningún cliente con ese DNI.");
         }
         if (nombre != null && !nombre.isBlank()){
-            cliente.setNombre(nombre);
+            clienteLista.setNombre(nombre);
         }
         if (telefono != null && !telefono.isBlank()){
-            cliente.setTelefono(telefono);
+            clienteLista.setTelefono(telefono);
         }
-        return cliente;
+        return clienteLista;
     }
 
     public Cliente buscar(Cliente cliente){
         Objects.requireNonNull(cliente, "No se puede buscar un cliente nulo.");
-        return (coleccionClientes.contains(cliente) ? cliente : null);
+        int indice = coleccionClientes.indexOf(cliente);
+        return (coleccionClientes.contains(cliente) ? coleccionClientes.get(indice) : null);
     }
 
     public void borrar(Cliente cliente) throws TallerMecanicoExcepcion{
