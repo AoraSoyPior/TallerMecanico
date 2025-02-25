@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="Clase Revisiones añadida">
+    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="Clase Modelo añadida">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,10 +48,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="Exception" />
         <option value="Record" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -98,6 +98,7 @@
     &quot;Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ClienteTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ClientesTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ModeloTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RevisionTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RevisionesTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VehiculoTest.executor&quot;: &quot;Run&quot;,
@@ -333,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740386270408</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Clase Modelo añadida">
+      <option name="closed" value="true" />
+      <created>1740409411541</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1740409411541</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -349,7 +358,8 @@
     <MESSAGE value="Clase Clientes añadida" />
     <MESSAGE value="Clase Vehiculos añadida" />
     <MESSAGE value="Clase Revisiones añadida" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clase Revisiones añadida" />
+    <MESSAGE value="Clase Modelo añadida" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clase Modelo añadida" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TallerMecanico$RevisionTest.ic" NAME="RevisionTest Coverage Results" MODIFIED="1706862963586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
