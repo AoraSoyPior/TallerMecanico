@@ -4,7 +4,6 @@ package org.iesalandalus.programacion.tallermecanico.vista;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Vehiculos;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 import java.time.LocalDate;
@@ -96,18 +95,16 @@ public class Consola {
         return new Vehiculo("Seat", "Panda", matricula);
     }
 
-    public static Revision leerRevisiones(){
+    public static Revision leerRevision(){
         return new Revision(leerCliente(), leerVehiculo(), leerFecha("Introduce la fecha inicio:"));
     }
 
     public static int leerHoras(){
-        System.out.print("Introduce el numero de horas: ");
-        return Entrada.entero();
+        return leerEntero("Introduce la cantidad de horas: ");
     }
 
     public static float leerPrecioMaterial(){
-        System.out.print("Introduce el precio del material: ");
-        return Entrada.real();
+        return leerReal("Introduce el precio del material: ");
     }
 
     public static LocalDate leerFechaCierre(){
