@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Revisiones {
+public class Trabajos {
 
     private final List<Revision> coleccionRevisiones;
 
-    public Revisiones(){
+    public Trabajos(){
         coleccionRevisiones = new ArrayList<>();
     }
 
@@ -50,7 +50,7 @@ public class Revisiones {
 
     private void comprobarRevision(Cliente cliente, Vehiculo vehiculo, LocalDate fechaRevision) throws  TallerMecanicoExcepcion{
         for (Revision revision : coleccionRevisiones) {
-            if (!revision.estaCerrada()){
+            if (!revision.estaCerrado()){
                 if (revision.getCliente().equals(cliente)){
                     throw new TallerMecanicoExcepcion("El cliente tiene otra revisión en curso.");
                 }
