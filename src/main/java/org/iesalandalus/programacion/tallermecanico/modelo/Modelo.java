@@ -2,130 +2,50 @@ package org.iesalandalus.programacion.tallermecanico.modelo;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
+import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Modelo {
+public interface Modelo {
+    void comenzar();
 
-    private IClientes clientes;
-    private IVehiculos vehiculos;
-    private ITrabajos revisiones;
+    void terminar();
 
-    public Modelo(){
-        comenzar();
-    }
+    void insertar(Cliente cliente) throws TallerMecanicoExcepcion;
 
-    public void comenzar(){
-        clientes = new Clientes();
-        vehiculos = new Vehiculos();
-        revisiones = new Trabajos();
-    }
+    void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion;
 
-    public void terminar(){
-        System.out.println("El modelo ha terminado.");
-    }
+    void insertar(Trabajo trabajo) throws TallerMecanicoExcepcion;
 
-    public void insertar(Cliente cliente) throws TallerMecanicoExcepcion {
-        clientes.insertar(new Cliente(cliente));
-    }
+    Cliente buscar(Cliente cliente);
 
-    public void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
-        vehiculos.insertar(vehiculo);
-    }
+    Vehiculo buscar(Vehiculo vehiculo);
 
-    public void insertar(Revision revision) throws TallerMecanicoExcepcion {
-        revisiones.insertar(new Revision(clientes.buscar(revision.getCliente()), vehiculos.buscar(revision.getVehiculo()), revision.getFechaInicio()));
-    }
+    Trabajo buscar(Trabajo trabajo);
 
-    public Cliente buscar(Cliente cliente){
-        return (clientes.buscar(cliente) != null ? new Cliente(cliente) : null);
-    }
+    Cliente modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion;
 
-    public Vehiculo buscar(Vehiculo vehiculo){
-        return (vehiculos.buscar(vehiculo) != null ? vehiculo : null);
-    }
+    Trabajo anadirHoras(Trabajo trabajo, int horas) throws TallerMecanicoExcepcion;
 
-    public Revision buscar(Revision revision){
-        return (revisiones.buscar(revision) != null ? new Revision(revision) : null);
-    }
+    Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion;
 
-    public Cliente modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion {
-        return clientes.modificar(cliente, nombre, telefono);
-    }
+    Trabajo cerrar(Trabajo trabajo, LocalDate fechaFin) throws TallerMecanicoExcepcion;
 
-    public Revision anadirHoras(Revision revision, int horas) throws TallerMecanicoExcepcion {
-        return revisiones.anadirHoras(revision, horas);
-    }
+    void borrar(Cliente cliente) throws TallerMecanicoExcepcion;
 
-    public Revision anadirPrecioMaterial(Revision revision, float precioMaterial) throws TallerMecanicoExcepcion {
-        return revisiones.anadirPrecioMaterial(revision, precioMaterial);
-    }
+    void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion;
 
-    public Revision cerrar(Revision revision, LocalDate fechaFin) throws TallerMecanicoExcepcion {
-        return revisiones.cerrar(revision, fechaFin);
-    }
+    void borrar(Trabajo trabajo) throws TallerMecanicoExcepcion;
 
-    public void borrar(Cliente cliente) throws TallerMecanicoExcepcion {
-        List<Revision> revisionesCliente = revisiones.get(cliente);
-        for (Revision revisionCliente : revisionesCliente){
-            revisiones.borrar(revisionCliente);
-        }
-        clientes.borrar(cliente);
-    }
+    List<Cliente> getClientes();
 
-    public void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
-        List<Revision> revisionesVehiculo = revisiones.get(vehiculo);
-        for (Revision revisionVehiculo : revisionesVehiculo){
-            revisiones.borrar(revisionVehiculo);
-        }
-        vehiculos.borrar(vehiculo);
-    }
-    public void borrar(Revision revision) throws TallerMecanicoExcepcion {
-        revisiones.borrar(revision);
-    }
+    List<Vehiculo> getVehiculos();
 
-    public List<Cliente> getClientes(){
-        List<Cliente> resultado = new ArrayList<>();
-        for (Cliente cliente : clientes.get()){
-            resultado.add(new Cliente(cliente));
-        }
-        return resultado;
-    }
+    List<Trabajo> getTrabajos();
 
-    public List<Vehiculo> getVehiculos(){
-        return new ArrayList<>(vehiculos.get());
-    }
+    List<Trabajo> getTrabajos(Cliente cliente);
 
-    public List<Revision> getRevisiones(){
-        List<Revision> resultado = new ArrayList<>();
-        for (Revision revision : revisiones.get()){
-            resultado.add(new Revision(revision));
-        }
-        return resultado;
-    }
-
-    public List<Revision> getRevisiones(Cliente cliente){
-        List<Revision> resultado = new ArrayList<>();
-        for (Revision revision : revisiones.get(cliente)){
-            resultado.add(new Revision(revision));
-        }
-        return resultado;
-    }
-
-    public List<Revision> getRevisiones(Vehiculo vehiculo){
-        List<Revision> resultado = new ArrayList<>();
-        for (Revision revision : revisiones.get(vehiculo)){
-            resultado.add(new Revision(revision));
-        }
-        return resultado;
-    }
+    List<Trabajo> getTrabajos(Vehiculo vehiculo);
 }

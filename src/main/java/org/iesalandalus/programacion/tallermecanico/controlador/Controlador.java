@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Controlador {
 
-    private Modelo modelo;
+    private org.iesalandalus.programacion.tallermecanico.modelo.Modelo modelo;
     private Vista vista;
 
     public Controlador(Modelo modelo, Vista vista) {
@@ -92,14 +92,14 @@ public class Controlador {
     }
 
     public List<Revision> getRevisiones(){
-        return modelo.getRevisiones();
+        return modelo.getTrabajos();
     }
 
     public List<Revision> getRevisiones(Cliente cliente){
-        return modelo.getRevisiones(cliente);
+        return modelo.getTrabajos(cliente);
     }
 
     public List<Revision> getRevisiones(Vehiculo vehiculo){
-        return modelo.getRevisiones(vehiculo);
+        return modelo.getTrabajos(vehiculo);
     }
 }
